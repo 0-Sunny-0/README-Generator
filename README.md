@@ -18,4 +18,3 @@ node index.js <br>
 ## Questions
 
 If you have any questions regarding this repo, please open an issue or email me directly at msafinch@gmail.com. <br> To view my other repos, take a look at my <a href="https://github.com/0-Sunny-0">GitHub profile.</a>
-0
