@@ -25,7 +25,7 @@ const questions = [
     {type: "list",
     message: "What type of license would you like to assign to your project?",
     name: "license",
-    choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]},
+    choices: ["APACHE 2.0", "Eclipse 1.0", "IBM 1.0", "MIT", "WTFPL", "None"]},
 // Question 6
     {type: "input",
     message: "What command should be use to run the dependencies?",
@@ -57,10 +57,7 @@ function init() {
     inquirer
     .prompt(questions)
     .then((data) => {
-        let markdown = generateMarkdown(data);
-        writeToFile(markdown);
-    }
-    );
+    })    
 }
 
 // Function call to initialize app
