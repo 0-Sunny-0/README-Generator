@@ -35,7 +35,7 @@ function renderLicenseBadge(license) {
     return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
   } else if (license === "WTFPL") {
     return "[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)";
-  } else if (license === "None") {
+  } else {
     return "";
   }
 }
@@ -43,29 +43,34 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license === "Apache 2.0") {
-    return "(https://opensource.org/licenses/Apache-2.0)";
-  } else if (license === "Eclipse 1.0") {
-    return "(https://opensource.org/licenses/EPL-1.0)";
-  } else if (license === "IBM 1.0") {
-    return "(https://opensource.org/licenses/IPL-1.0)";
-  } else if (license === "MIT") {
-    return "(https://opensource.org/licenses/MIT)";
-  } else if (license === "WTFPL") {
-    return "(http://www.wtfpl.net/about/)";
-  } else if (license === "None") {
-    return "";
+  // if (license === "Apache 2.0") {
+  //   return "(https://opensource.org/licenses/Apache-2.0)";
+  // } else if (license === "Eclipse 1.0") {
+  //   return "(https://opensource.org/licenses/EPL-1.0)";
+  // } else if (license === "IBM 1.0") {
+  //   return "(https://opensource.org/licenses/IPL-1.0)";
+  // } else if (license === "MIT") {
+  //   return "(https://opensource.org/licenses/MIT)";
+  // } else if (license === "WTFPL") {
+  //   return "(http://www.wtfpl.net/about/)";
+  // } else if (license === "None") {
+  //   return "";
+  // }
+
+  if (license === 'None'){
+    return ''
   }
+  return ' [License](#license)'
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license != "None") {
-    const licenseBadge = renderLicenseBadge(license);
+  if (license !== "None") {
+   
     return `## License
     
-    This application is covered under the ${licenseBadge} license`
+    This application is covered under the ${license} license`
   } else {
     return '';
   }
@@ -75,7 +80,7 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
 
-  ${licenseBadge}
+  ${renderLicenseBadge(data.license)}
 
   ## Description
 
@@ -85,8 +90,8 @@ function generateMarkdown(data) {
 
   [Installation](#Installation)
   [Usage](#Usage)
-  [License](#License)
   [Contributing](#Contributing)
+${renderLicenseLink(data.license)}
   [Tests](#Tests)
   [Questions](#Questions)
 
@@ -94,7 +99,7 @@ function generateMarkdown(data) {
 
   To install the necessary dependencies for this application, please run the following command: 
 
-  ${data.dependencies}
+  ${data.command}
 
   ## Usage
 
@@ -104,14 +109,16 @@ function generateMarkdown(data) {
 
   ${data.contributing}
 
+  ${renderLicenseSection(data.license)}
+
   ## Tests
 
-  ${data.tests}
+  ${data.test}
 
   ## Questions
 
-  If you have any questions regarding this application or repo, please open an issue or email me at ${data.email}<br>
-  You can also find more of my work by visiting (http://github.com/${data.username}). 
+  If you have any questions regarding this application or repo, please open an issue or email me at ${data.userEmail}<br>
+  You can also find more of my work by visiting http://github.com/${data.userName}. 
 `;
 }
 

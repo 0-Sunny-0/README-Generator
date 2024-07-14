@@ -34,7 +34,14 @@ const questions = [
         type: "list",
         message: "What type of license would you like to assign to your project?",
         name: "license",
-        choices: ["APACHE 2.0", "Eclipse 1.0", "IBM 1.0", "MIT", "WTFPL", "None"]
+        choices: [
+            "APACHE 2.0", 
+            "Eclipse 1.0", 
+            "IBM 1.0", 
+            "MIT", 
+            "WTFPL", 
+            "None"
+        ]
     },
     // Question 6
     {
@@ -63,8 +70,8 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-const writeToFile = (data) => {
-    fs.writeToFile('generated-README.md', data, (err) => {
+const writeToFile = (fileName, data) => {
+    fs.writeFile(fileName, data, (err) => {
         err ? console.error(err) : console.log('File has been created!')
     })
 }
@@ -75,6 +82,8 @@ function init() {
     inquirer
         .prompt(questions)
         .then((data) => {
+            writeToFile('README.md', generateMarkdown(data))
+        
         })
 }
 
