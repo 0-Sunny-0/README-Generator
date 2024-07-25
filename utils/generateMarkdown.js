@@ -88,12 +88,12 @@ function generateMarkdown(data) {
 
   ## Table of Contents
 
-  [Installation](#Installation)
-  [Usage](#Usage)
-  [Contributing](#Contributing)
-${renderLicenseLink(data.license)}
-  [Tests](#Tests)
-  [Questions](#Questions)
+  [Installation](#Installation)<br>
+  [Usage](#Usage)<br>
+  [Contributing](#Contributing)<br>
+ ${renderLicenseLink(data.license)}<br>
+  [Tests](#Tests)<br>
+  [Questions](#Questions)<br>
 
   ## Installation
 
